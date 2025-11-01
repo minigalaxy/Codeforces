@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1761852602 source:c:\users\ÀÌ¿µÈÆ\documents\ps\codeforces\pinely.round.5\d\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+
