@@ -13,8 +13,6 @@ int main(){
         if(s[i] >= 'a') caps = false;
     }
 
-    if(s.size() == 1 && s[0] < 'a') caps = false;
-
     if(caps){
         for(char c: s){
             if(c >= 'a') cout << char(c - 'a' + 'A');
