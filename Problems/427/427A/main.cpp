@@ -12,7 +12,11 @@ int main(){
     for(int i = 0, c = 0, e; i < n; i++){
         cin >> e;
 
-        if(e < 0 && (c += e) < 0) res++;
+        if(e == -1){
+            if(c == 0) res++;
+            else c--;
+        }
+        else c += e;
     }
 
     cout << res;
