@@ -4,18 +4,14 @@ using namespace std;
 
 int n, m;
 
-a + b = x * m
-a + 2b = n
-
-a = 2 * x * m - n
-b = n - x * m
-
-n >= x * m
+int x;
 
 int main(){
     cin >> n >> m;
 
-    cout << ((n >= m) ?  : -1);
+    x = (n + 2 * m - 1) / (2 * m);
+
+    cout << ((m * x <= n && n <= 2 * m * x && x > 0) ? m * x : -1);
 
     return 0;
 }
