@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ int n, m;
 
 vector<pair<int, int>> edge[100'001];
 
-priority_queue<pair<long long, int>> Q;
+priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> Q;
 
 long long dist[100'001];
 
@@ -22,8 +23,8 @@ void back_track(int cur){
     }
 
     for(pair<int, int> next: edge[cur]){
-        if(dist[cur] == dist[next.first] + next.second){
-            back_track(next.first);
+        if(dist[cur] == dist[next.second] + next.first){
+            back_track(next.second);
 
             cout << cur << ' ';
             
@@ -42,9 +43,11 @@ int main(){
         int a, b, w;
         cin >> a >> b >> w;
 
-        edge[a].push_back({ b, w });
-        edge[b].push_back({ a, w });
+        edge[a].push_back({ w, b });
+        edge[b].push_back({ w, a });
     }
+
+    for(int i = 1; i <= n; i++) sort(edge[i].begin(), edge[i].end());
 
     fill(dist + 1, dist + n + 1, MAX);
 
@@ -55,12 +58,14 @@ int main(){
         pair<long long, int> cur = Q.top();
         Q.pop();
 
-        for(pair<int, int> next: edge[cur.second]){
-            long long next_dist = cur.first + next.second;
+        if(cur.second == n) break;
 
-            if(next_dist < dist[next.first]){
-                Q.push({ next_dist, next.first });
-                dist[next.first] = next_dist;
+        for(pair<int, int> next: edge[cur.second]){
+            long long next_dist = cur.first + next.first;
+
+            if(next_dist < dist[next.second]){
+                Q.push({ next_dist, next.second });
+                dist[next.second] = next_dist;
             }
         }
     }
