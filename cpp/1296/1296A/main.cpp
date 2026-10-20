@@ -19,7 +19,7 @@ int main(){
         for(int j = 0; j < n; j++){
             cin >> a;
 
-            if(a % 2 == 0) even++;
+            if(a & 1 == 0) even++;
             else odd++;
         }
 
