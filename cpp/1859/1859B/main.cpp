@@ -10,8 +10,6 @@ int m;
 
 int a[25'000][2];
 
-int diff[25'000];
-
 int main(){
     cin >> t;
 
@@ -32,11 +30,21 @@ int main(){
                 }
                 else if(t < a[j][1]) a[j][1] = t;
             }
-            
-            diff[j] = a[j][1] - a[j][0];
         }
+
+        int min_idx = 0;
         
-        
+        for(int j = 1; j < n; j++){
+            if(a[j][1] < a[min_idx][1]) min_idx = j;
+        }
+
+        for(int j = 0; j < n; j++) a[min_idx][1] = min(a[min_idx][1], a[j][0]);
+
+        long long res = 0LL;
+
+        for(int j = 0; j < n; j++) res += a[j][1];
+
+        cout << res << '\n';
     }
 
     return 0;

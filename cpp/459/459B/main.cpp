@@ -14,7 +14,8 @@ int main(){
 
     int min_f = *min_element(b, b + n), max_f = *max_element(b, b + n);
 
-    cout << max_f - min_f << ' ' << 1LL * count(b, b + n, min_f) * count(b, b + n, max_f); 
+    if(min_f != max_f) cout << max_f - min_f << ' ' << 1LL * count(b, b + n, min_f) * count(b, b + n, max_f); 
+    else cout << 0 << ' ' << 1LL * count(b, b + n, min_f) * (count(b, b + n, min_f) - 1) / 2;
 
     return 0;
 }
