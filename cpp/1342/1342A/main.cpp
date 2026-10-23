@@ -16,7 +16,7 @@ int main(){
 
         cin >> a >> b;
 
-        cout << min(a * (x + y), a * (max(a, b) - min(a, b)) + b * min(a, b)) << '\n';
+        cout << min(a * (x + y), a * (max(x, y) - min(x, y)) + b * min(x, y)) << '\n';
     }
 
     return 0;
